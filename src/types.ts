@@ -12,6 +12,7 @@ export type WorkspaceCache = {
 export type RefT = {
   label: string;
   ref: string;
+  section?: string;
 };
 
 export type FoundRefT = {

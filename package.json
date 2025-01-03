@@ -1,21 +1,21 @@
 {
-	"name": "markdown-memo",
-	"displayName": "Markdown Memo",
-	"description": "Markdown knowledge base with bidirectional [[link]]s built on top of VSCode",
-	"publisher": "svsool",
-	"version": "0.3.19",
-	"author": "Svyatoslav Sobol <svyat.nx@gmail.com>",
+	"name": "markdown-memo-asbjborg",
+	"displayName": "Markdown Memo asbjborg",
+	"description": "Markdown knowledge base with bidirectional [[link]]s built on top of VSCode (Fork of svsool/memo)",
+	"publisher": "asbjborg",
+	"version": "0.1.27",
+	"author": "asbjborg <contact@moosmann-consulting.com>",
 	"license": "MIT",
 	"icon": "media/memo.png",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/svsool/memo"
+		"url": "https://github.com/asbjborg/memo"
 	},
 	"bugs": {
-		"url": "https://github.com/svsool/memo/issues"
+		"url": "https://github.com/asbjborg/memo/issues"
 	},
 	"engines": {
-		"vscode": "^1.75.1"
+		"vscode": "^1.76.0"
 	},
 	"categories": [
 		"Other"
@@ -52,6 +52,9 @@
 	"main": "./dist/extension",
 	"contributes": {
 		"markdown.markdownItPlugins": true,
+		"markdown.previewScripts": [
+			"./dist/extension.js"
+		],
 		"grammars": [
 			{
 				"path": "./syntaxes/injection.json",

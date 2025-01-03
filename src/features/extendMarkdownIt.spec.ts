@@ -554,4 +554,36 @@ describe('extendMarkdownIt feature', () => {
       `<p><a title="${url}" href="${url}" data-href="${url}">Test Label</a></p>\n`,
     );
   });
+
+  it('should render html link to the existing note with section', async () => {
+    const name = rndName();
+
+    await createFile(`${name}.md`);
+
+    const md = extendMarkdownIt(MarkdownIt());
+
+    const notePath = `${path.join(getWorkspaceFolder()!, name)}.md`;
+
+    const url = getFileUrlForMarkdownPreview(notePath);
+
+    expect(md.render(`[[${name}#section]]`)).toBe(
+      `<p><a title="${url}#section" href="${url}#section" data-href="${url}#section">${name}#section</a></p>\n`,
+    );
+  });
+
+  it('should render html link to the existing note with section and label', async () => {
+    const name = rndName();
+
+    await createFile(`${name}.md`);
+
+    const md = extendMarkdownIt(MarkdownIt());
+
+    const notePath = `${path.join(getWorkspaceFolder()!, name)}.md`;
+
+    const url = getFileUrlForMarkdownPreview(notePath);
+
+    expect(md.render(`[[${name}#section|Label]]`)).toBe(
+      `<p><a title="${url}#section" href="${url}#section" data-href="${url}#section">Label</a></p>\n`,
+    );
+  });
 });

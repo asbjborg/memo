@@ -14,19 +14,60 @@ import {
 
 let workspaceErrorShown = false;
 
+const findSectionPosition = async (
+  document: vscode.TextDocument,
+  section: string,
+): Promise<vscode.Position | undefined> => {
+  const text = document.getText();
+  const lines = text.split('\n');
+  const headerRegex = /^(#{1,6})\s*(.+?)\s*$/;
+
+  for (let i = 0; i < lines.length; i++) {
+    const match = lines[i].match(headerRegex);
+    if (match) {
+      const title = match[2];
+      const normalizedTitle = title
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-');
+      const normalizedSection = section
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-');
+
+      if (normalizedTitle === normalizedSection) {
+        return new vscode.Position(i, 0);
+      }
+    }
+  }
+  return undefined;
+};
+
 const openDocumentByReference = async ({
   reference,
   showOption = vscode.ViewColumn.Active,
+  section,
 }: {
   reference: string;
   showOption?: vscode.ViewColumn;
+  section?: string;
 }) => {
   const { ref } = parseRef(reference);
 
   const uri = findUriByRef(cache.getWorkspaceCache().allUris, ref);
 
   if (uri) {
-    await vscode.commands.executeCommand('vscode.open', uri, showOption);
+    const document = await vscode.workspace.openTextDocument(uri);
+    const editor = await vscode.window.showTextDocument(document, showOption);
+
+    if (section) {
+      const decodedSection = decodeURIComponent(section);
+      const position = await findSectionPosition(document, decodedSection);
+      if (position) {
+        editor.selection = new vscode.Selection(position, position);
+        editor.revealRange(new vscode.Range(position, position), vscode.TextEditorRevealType.AtTop);
+      }
+    }
   } else {
     const workspaceFolder = getWorkspaceFolder()!;
     if (workspaceFolder) {

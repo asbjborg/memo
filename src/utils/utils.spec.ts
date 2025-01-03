@@ -216,24 +216,44 @@ describe('getRefUriUnderCursor()', () => {
 });
 
 describe('parseRef()', () => {
-  it('should fail on providing wrong parameter type', () => {
+  it('should throw error when undefined passed', () => {
     expect(() => parseRef(undefined as unknown as string)).toThrow();
   });
 
-  it('should return empty ref and label', () => {
-    expect(parseRef('')).toEqual({ ref: '', label: '' });
+  it('should return empty ref and label when empty string passed', () => {
+    expect(parseRef('')).toEqual({ ref: '', label: '', section: undefined });
   });
 
-  it('should parse raw ref and return ref and label', () => {
-    expect(parseRef('link|Label')).toEqual({ ref: 'link', label: 'Label' });
+  it('should parse ref and label', () => {
+    expect(parseRef('link|Label')).toEqual({ ref: 'link', label: 'Label', section: undefined });
   });
 
-  it('should favour only first divider', () => {
-    expect(parseRef('link|||Label')).toEqual({ ref: 'link', label: '||Label' });
+  it('should parse ref with multiple dividers in label', () => {
+    expect(parseRef('link|||Label')).toEqual({ ref: 'link', label: '||Label', section: undefined });
   });
 
-  it('should ignore escape symbol', () => {
-    expect(parseRef('link\\|Label')).toEqual({ ref: 'link', label: 'Label' });
+  it('should parse ref with escaped divider', () => {
+    expect(parseRef('link\\|Label')).toEqual({ ref: 'link', label: 'Label', section: undefined });
+  });
+
+  it('should parse section link', () => {
+    expect(parseRef('file#section')).toEqual({ ref: 'file', label: '', section: 'section' });
+  });
+
+  it('should parse section link with label', () => {
+    expect(parseRef('file#section|Label')).toEqual({
+      ref: 'file',
+      label: 'Label',
+      section: 'section',
+    });
+  });
+
+  it('should parse section link with hash in label', () => {
+    expect(parseRef('file#section|Label#hash')).toEqual({
+      ref: 'file',
+      label: 'Label#hash',
+      section: 'section',
+    });
   });
 });
 

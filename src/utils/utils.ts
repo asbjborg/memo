@@ -202,7 +202,7 @@ export const matchAll = (pattern: RegExp, text: string): Array<RegExpMatchArray>
 export const getReferenceAtPosition = (
   document: vscode.TextDocument,
   position: vscode.Position,
-): { range: vscode.Range; ref: string; label: string } | null => {
+): { range: vscode.Range; ref: string; label: string; section?: string } | null => {
   if (
     isInFencedCodeBlock(document, position.line) ||
     isInCodeSpan(document, position.line, position.character)
@@ -216,13 +216,14 @@ export const getReferenceAtPosition = (
     return null;
   }
 
-  const { ref, label } = parseRef(
+  const { ref, label, section } = parseRef(
     document.getText(range).replace('![[', '').replace('[[', '').replace(']]', ''),
   );
 
   return {
     ref,
     label,
+    section,
     range,
   };
 };
@@ -414,13 +415,19 @@ export const parseRef = (rawRef: string): RefT => {
   const dividerPosition =
     escapedDividerPosition !== -1 ? escapedDividerPosition : rawRef.indexOf('|');
 
-  return {
-    ref: dividerPosition !== -1 ? rawRef.slice(0, dividerPosition) : rawRef,
-    label:
-      dividerPosition !== -1
-        ? rawRef.slice(dividerPosition + (escapedDividerPosition !== -1 ? 2 : 1), rawRef.length)
-        : '',
-  };
+  // First split by label divider
+  const refPart = dividerPosition !== -1 ? rawRef.slice(0, dividerPosition) : rawRef;
+  const label =
+    dividerPosition !== -1
+      ? rawRef.slice(dividerPosition + (escapedDividerPosition !== -1 ? 2 : 1), rawRef.length)
+      : '';
+
+  // Then check for section
+  const sectionPosition = refPart.indexOf('#');
+  const ref = sectionPosition !== -1 ? refPart.slice(0, sectionPosition) : refPart;
+  const section = sectionPosition !== -1 ? refPart.slice(sectionPosition + 1) : undefined;
+
+  return { ref, label, section };
 };
 
 export const findNonIgnoredFiles = async (

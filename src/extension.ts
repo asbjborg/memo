@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import MarkdownIt from 'markdown-it';
 
 import { fileWatcher, cache } from './workspace';
 import {
@@ -51,9 +52,10 @@ export const activate = async (
       when('links.following.enabled', () =>
         vscode.languages.registerDocumentLinkProvider(mdLangSelector, new DocumentLinkProvider()),
       ),
-      when('links.preview.enabled', () =>
-        vscode.languages.registerHoverProvider(mdLangSelector, new ReferenceHoverProvider()),
-      ),
+      when('links.preview.enabled', () => {
+        logger.info('Registering hover provider...');
+        return vscode.languages.registerHoverProvider(mdLangSelector, new ReferenceHoverProvider());
+      }),
       when('links.references.enabled', () =>
         vscode.languages.registerReferenceProvider(mdLangSelector, new ReferenceProvider()),
       ),
@@ -85,7 +87,10 @@ export const activate = async (
 
   logger.info('Memo extension successfully initialized! 🎉');
 
+  // Return the markdown-it plugin if markdown preview is enabled
   return when('markdownPreview.enabled', () => ({
     extendMarkdownIt,
   }));
 };
+
+export function deactivate() {}
