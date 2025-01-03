@@ -1,18 +1,18 @@
 {
-	"name": "markdown-memo-asbjborg",
-	"displayName": "Markdown Memo asbjborg",
-	"description": "Markdown knowledge base with bidirectional [[link]]s built on top of VSCode (Fork of svsool/memo)",
-	"publisher": "asbjborg",
-	"version": "0.1.27",
-	"author": "asbjborg <contact@moosmann-consulting.com>",
+	"name": "markdown-memo",
+	"displayName": "Markdown Memo",
+	"description": "Markdown knowledge base with bidirectional [[link]]s built on top of VSCode",
+	"publisher": "svsool",
+	"version": "0.4.0",
+	"author": "Svyatoslav Sobol <mail@svyatoslav.com>",
 	"license": "MIT",
 	"icon": "media/memo.png",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/asbjborg/memo"
+		"url": "https://github.com/svsool/memo"
 	},
 	"bugs": {
-		"url": "https://github.com/asbjborg/memo/issues"
+		"url": "https://github.com/svsool/memo/issues"
 	},
 	"engines": {
 		"vscode": "^1.76.0"

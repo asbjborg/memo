@@ -22,41 +22,48 @@ If you want to try out Memo just install it via marketplace using [this link](ht
 
 - 🔗 **Links support**
 
-  - Creating links
+    - Creating links
 
-    - ![Creating links](./help/Attachments/Creating%20links.gif)
+        - ![Creating links](./help/Attachments/Creating%20links.gif)
 
-  - Links navigation
+    - Links navigation
 
-    - ![Links navigation](./help/Attachments/Links%20navigation.gif)
+        - ![Links navigation](./help/Attachments/Links%20navigation.gif)
 
-  - Embedding notes and images
+    - Embedding notes and images
 
-    - ![Embedding notes and images](./help/Attachments/Embed%20files.gif)
+        - ![Embedding notes and images](./help/Attachments/Embed%20files.gif)
 
-  - Automatic links synchronization on file rename
+    - Automatic links synchronization on file rename
 
-    - ![Automatic links synchronization](./help/Attachments/Automatic%20link%20synchronization.gif)
+        - ![Automatic links synchronization](./help/Attachments/Automatic%20link%20synchronization.gif)
 
-  - Links rename via `Rename Symbol` command
+    - Links rename via `Rename Symbol` command
 
-    - ![Links rename via command](./help/Attachments/Automatic%20link%20synchronization%202.gif)
+        - ![Links rename via command](./help/Attachments/Automatic%20link%20synchronization%202.gif)
 
-  - Links labeling
+    - Links labeling
 
-    - ![Links labeling](./help/Attachments/Links%20labeling.png)
+        - ![Links labeling](./help/Attachments/Links%20labeling.png)
 
-  - Support for short and full links on filename clash
+    - Support for short and full links on filename clash
 
-    - ![Support short and full links on filename clash](./help/Attachments/Short%20and%20long%20links%20support%202.png)
+        - ![Support short and full links on filename clash](./help/Attachments/Short%20and%20long%20links%20support%202.png)
 
-  - Opening links with unsupported file formats in the system default app
+    - Section linking and navigation
 
-    - ![Links labeling](./help/Attachments/Opening%20links%20in%20the%20default%20app.gif)
+        - Create links to specific sections using `[[filename#Section Name]]` syntax
+        - Preview section content on hover
+        - Navigate directly to sections when clicking links
+        - Automatic section ID generation matching Obsidian's format
 
-  - Find all references
+    - Opening links with unsupported file formats in the system default app
 
-    - ![Find all references](./help/Attachments/Find%20all%20references.png)
+        - ![Links labeling](./help/Attachments/Opening%20links%20in%20the%20default%20app.gif)
+
+    - Find all references
+
+        - ![Find all references](./help/Attachments/Find%20all%20references.png)
 
 - 🖼️ **Notes and images preview (built-in & on-hover)**
 
@@ -72,27 +79,27 @@ If you want to try out Memo just install it via marketplace using [this link](ht
 
 - 🕹 **Commands**
 
-  - "Open link" command support for links following
+    - "Open link" command support for links following
 
-  - "Open link to the side" command allows you to open link in the adjacent/new column of the editor
+    - "Open link to the side" command allows you to open link in the adjacent/new column of the editor
 
-  - "Open daily note" command which creates a note with a title in `yyyy-mm-dd` format or opens already existing one
+    - "Open daily note" command which creates a note with a title in `yyyy-mm-dd` format or opens already existing one
 
-    - ![Open daily note command](./help/Attachments/Open%20daily%20note.gif)
+        - ![Open daily note command](./help/Attachments/Open%20daily%20note.gif)
 
-  - "Open random note" command which allows you to explore your knowledge base a little bit
+    - "Open random note" command which allows you to explore your knowledge base a little bit
 
-    - ![Open random note command](./help/Attachments/Open%20random%20note.gif)
+        - ![Open random note command](./help/Attachments/Open%20random%20note.gif)
 
-  - "Open link in the default app" command for opening unsupported file formats in the system default app
+    - "Open link in the default app" command for opening unsupported file formats in the system default app
 
-  - "Paste HTML as Markdown" command which can partially replace a web clipper functionality
+    - "Paste HTML as Markdown" command which can partially replace a web clipper functionality
 
-    - ![Paste HTML as Markdown](./help/Attachments/Paste%20HTML%20as%20Markdown.gif)
+        - ![Paste HTML as Markdown](./help/Attachments/Paste%20HTML%20as%20Markdown.gif)
 
-  - "Rename Symbol" command support for renaming links right in the editor
+    - "Rename Symbol" command support for renaming links right in the editor
 
-  - "Extract range to a new note" command to ease notes refactoring
+    - "Extract range to a new note" command to ease notes refactoring
 
 ## Contributing
 

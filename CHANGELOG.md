@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.0](https://github.com/svsool/memo/compare/v0.3.19...v0.4.0) (2024-01-21)
+
+
+### Features
+
+* **links:** add section linking support
+  * add support for linking to specific sections using `[[filename#Section Name]]` syntax
+  * add section content preview on hover
+  * add direct navigation to sections when clicking links
+  * add automatic section ID generation matching Obsidian's format
+
+
 ### [0.3.19](https://github.com/svsool/memo/compare/v0.3.18...v0.3.19) (2022-07-30)
 
 
